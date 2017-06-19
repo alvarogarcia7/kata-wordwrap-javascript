@@ -9,7 +9,11 @@ class WordWrap {
   }
 
   wrap(input) {
-    return input;
+    if(input.length > 10){
+    return input.substring(0,72)+'\n'+input.substring(72, input.length);
+  } else {
+    return input
+  }
   }
 }
 

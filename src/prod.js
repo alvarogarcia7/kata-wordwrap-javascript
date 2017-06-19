@@ -10,12 +10,18 @@ class WordWrap {
   }
 
   wrap(input) {
-    
-    if(input.length > this.wrapSize){
-    return input.substring(0,this.wrapSize)+'\n'+input.substring(this.wrapSize, input.length);
-  } else {
-    return input
-  }
+
+    var wrapped = ''
+    var remainingInput = input
+    if(remainingInput.length > this.wrapSize){
+      wrapped += remainingInput.substring(0,this.wrapSize)+'\n';
+      remainingInput = remainingInput.substring(this.wrapSize, input.length);
+    }
+    if(remainingInput.length > this.wrapSize){
+      wrapped += remainingInput.substring(0,this.wrapSize)+'\n';
+      remainingInput = remainingInput.substring(this.wrapSize, input.length);
+    }
+    return wrapped+remainingInput 
   }
 }
 

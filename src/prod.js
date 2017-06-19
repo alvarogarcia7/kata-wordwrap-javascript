@@ -6,12 +6,13 @@ class WordWrap {
 
   constructor(options) {
     this.options = options;
+    this.wrapSize = 72;
   }
 
   wrap(input) {
-    let wrapSize = 72;
-    if(input.length > wrapSize){
-    return input.substring(0,wrapSize)+'\n'+input.substring(wrapSize, input.length);
+    
+    if(input.length > this.wrapSize){
+    return input.substring(0,this.wrapSize)+'\n'+input.substring(this.wrapSize, input.length);
   } else {
     return input
   }

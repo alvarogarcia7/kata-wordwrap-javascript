@@ -9,8 +9,9 @@ class WordWrap {
   }
 
   wrap(input) {
-    if(input.length > 72){
-    return input.substring(0,72)+'\n'+input.substring(72, input.length);
+    let wrapSize = 72;
+    if(input.length > wrapSize){
+    return input.substring(0,wrapSize)+'\n'+input.substring(wrapSize, input.length);
   } else {
     return input
   }

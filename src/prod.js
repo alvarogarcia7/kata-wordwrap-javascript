@@ -14,9 +14,9 @@ class WordWrap {
     var wrapped = ''
     var remainingInput = input
 
-    while(remainingInput.length > this.wrapSize){
-      wrapped += remainingInput.substring(0,this.wrapSize)+'\n';
-      remainingInput = remainingInput.substring(this.wrapSize, input.length);
+    while(remainingInput.length > this.wrapSize-1){
+      wrapped += remainingInput.substring(0,this.wrapSize-1)+'-\n';
+      remainingInput = remainingInput.substring(this.wrapSize-1, input.length);
     }
     wrapped = wrapped + remainingInput;
     return {text: wrapped}

@@ -6,7 +6,7 @@ class WordWrap {
 
   constructor(options) {
     this.options = options;
-    this.wrapSize = 72;
+    this.wrapSize = options.wrapSize||72;
   }
 
   wrap(input) {

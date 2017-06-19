@@ -7,16 +7,21 @@ class WordWrap {
   constructor(options) {
     this.options = options;
     this.wrapSize = options.wrapSize||72;
+    if(options.wordSplitter === undefined) {
+      this.wordSplitter = '-'
+    } else {
+      this.wordSplitter = options.wordSplitter
+    }
   }
 
   wrap(input) {
 
     var wrapped = ''
     var remainingInput = input
-    const lineLength = this.wrapSize-1
+    const lineLength = this.wrapSize - this.wordSplitter.length
 
     while(remainingInput.length > lineLength){
-      wrapped += remainingInput.substring(0,lineLength)+'-\n';
+      wrapped += remainingInput.substring(0,lineLength) + this.wordSplitter + '\n';
       remainingInput = remainingInput.substring(lineLength, input.length);
     }
     wrapped = wrapped + remainingInput;

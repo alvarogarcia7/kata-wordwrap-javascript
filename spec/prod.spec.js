@@ -25,5 +25,8 @@ describe('Word Wrap', () => {
     it('word wrap at any specified size', () => {
        expect(wordWrap.aNew({wrapSize: 3}).wrap('123456789012').text).to.eql('12-\n34-\n56-\n78-\n90-\n12');
       });
+    it('word wrap at any specified size, without dashes', () => {
+       expect(wordWrap.aNew({wrapSize: 3, wordSplitter: ''}).wrap('123456789012').text).to.eql('123\n456\n789\n012');
+      });
 
 });

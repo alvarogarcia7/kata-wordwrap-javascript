@@ -8,8 +8,8 @@ class WordWrap {
     this.options = options;
   }
 
-  wrap() {
-    return ''
+  wrap(input) {
+    return input;
   }
 }
 

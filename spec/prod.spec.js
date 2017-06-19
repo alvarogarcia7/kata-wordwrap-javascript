@@ -10,4 +10,7 @@ describe('Word Wrap', () => {
     it('does not affect an empty input', () => {
      expect(wordWrap.aNew({}).wrap('')).to.eql('');
     });
+    it('does not affect an input shorter than wrap size', () => {
+     expect(wordWrap.aNew({}).wrap('abc')).to.eql('abc');
+    });
 });

@@ -13,11 +13,8 @@ class WordWrap {
 
     var wrapped = ''
     var remainingInput = input
-    if(remainingInput.length > this.wrapSize){
-      wrapped += remainingInput.substring(0,this.wrapSize)+'\n';
-      remainingInput = remainingInput.substring(this.wrapSize, input.length);
-    }
-    if(remainingInput.length > this.wrapSize){
+
+    while(remainingInput.length > this.wrapSize){
       wrapped += remainingInput.substring(0,this.wrapSize)+'\n';
       remainingInput = remainingInput.substring(this.wrapSize, input.length);
     }

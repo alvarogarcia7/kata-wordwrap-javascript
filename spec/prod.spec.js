@@ -20,7 +20,7 @@ describe('Word Wrap', () => {
      expect(wordWrap.aNew({}).wrap('abc')).to.eql('abc');
     });
     it('word wrap at any specified size', () => {
-       expect(wordWrap.aNew({wrapSize: 3}).wrap('123456789')).to.eql('123\n456\n789');
+       expect(wordWrap.aNew({wrapSize: 3}).wrap('123456789012')).to.eql('123\n456\n789\n012');
       });
 
 });

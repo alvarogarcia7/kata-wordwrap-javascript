@@ -36,6 +36,6 @@ module.exports = function (grunt) { //eslint-disable-line
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-env');
   // Default task(s).
-  grunt.registerTask('test', ['mochaTest:unit', 'eslint']);
+  grunt.registerTask('test', ['mochaTest:unit']);
   grunt.registerTask('watch-test', ['mochaTest:unit', 'watch:test']);
 };

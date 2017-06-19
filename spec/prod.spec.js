@@ -19,5 +19,8 @@ describe('Word Wrap', () => {
     it('does not affect an input shorter than wrap size', () => {
      expect(wordWrap.aNew({}).wrap('abc')).to.eql('abc');
     });
+    it('word wrap at any specified size', () => {
+       expect(wordWrap.aNew({wrapSize: 3}).wrap('123456')).to.eql('123\n456');
+      });
 
 });

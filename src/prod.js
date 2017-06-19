@@ -18,7 +18,7 @@ class WordWrap {
       wrapped += remainingInput.substring(0,this.wrapSize)+'\n';
       remainingInput = remainingInput.substring(this.wrapSize, input.length);
     }
-    return wrapped+remainingInput 
+    return {text: wrapped+remainingInput}
   }
 }
 

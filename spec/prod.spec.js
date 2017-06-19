@@ -7,13 +7,17 @@ chai.config.includeStack = true;
 const wordWrap = require('./../src/prod');
 
 describe('Word Wrap', () => {
+    describe('acceptance test', ()=> {
+      it('wrap at 72 if the value is omitted', () => {
+       expect(wordWrap.aNew({}).wrap('12345678901234567890123456789012345678901234567890123456789012345678901234567890')).to.eql('123456789012345678901234567890123456789012345678901234567890123456789012\n34567890');
+      });
+    });
+
     it('does not affect an empty input', () => {
      expect(wordWrap.aNew({}).wrap('')).to.eql('');
     });
     it('does not affect an input shorter than wrap size', () => {
      expect(wordWrap.aNew({}).wrap('abc')).to.eql('abc');
     });
-    it('does not affect an input shorter than wrap size', () => {
-     expect(wordWrap.aNew({}).wrap('12345678901234567890123456789012345678901234567890123456789012345678901234567890')).to.eql('123456789012345678901234567890123456789012345678901234567890123456789012\n34567890');
-    });
+
 });

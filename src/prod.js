@@ -17,8 +17,6 @@ class WordWrap {
 
   wrap(input) {
     if(containsSpace(input)){
-      const [firstLine, secondLine] =splitByLastSpace(input)
-      return {text: firstLine+'\n'+secondLine}
     }
 
     const lineLength = this.lineLength
@@ -26,6 +24,12 @@ class WordWrap {
     var remainingInput = input
 
     while(remainingInput.length > lineLength){
+      if(lineHasSpaceAfterCompletingTheLinePastTheMinimumAndNormalSplittingWouldSplitAWord(remainingInput)) {
+          const [line, rest] = extractLineWithAMinimumUpToSpace(remainingInput)
+          wrapped+=line+'\n'
+          remainingInput = rest
+          continue
+      }
       if(true){
         const line = remainingInput.substring(0,lineLength);
         wrapped += line
@@ -38,6 +42,15 @@ class WordWrap {
     }
     wrapped = wrapped + remainingInput;
     return {text: wrapped}
+
+    function extractLineWithAMinimumUpToSpace(input) {
+      const [firstLine, secondLine] =splitByLastSpace(input)
+      return [firstLine,secondLine]
+    }
+
+    function lineHasSpaceAfterCompletingTheLinePastTheMinimumAndNormalSplittingWouldSplitAWord (input) {
+      return containsSpace(input)
+    }
 
     function lineWouldEndInSpace(candidateLine) {
       return candidateLine.substring(lineLength, lineLength+1)!==' '

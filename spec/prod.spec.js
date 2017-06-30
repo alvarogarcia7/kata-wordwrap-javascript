@@ -33,3 +33,15 @@ describe('Word Wrap', () => {
       });
 
 });
+
+describe('WordWrap can use any rule', () => {
+  describe("", ()=>{
+    var calls = 0
+    expect(calls).to.equal(0)
+    const wrapper = wordWrap.using({strategies: [{fn: remaining => {calls++; return remaining;}}]}).aNew()
+
+    wrapper.wrap('123')
+
+    expect(calls).to.equal(1)
+  });
+});

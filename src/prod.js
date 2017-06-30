@@ -20,7 +20,7 @@ class WordWrap {
     const lineLength = this.lineLength
     var wrapped = ''
     var remainingInput = input
-    if(this.strategies){
+    if (this.strategies) {
       this.strategies[0].fn(input)
     }
 

@@ -26,13 +26,15 @@ class WordWrap {
     var remainingInput = input
 
     while(remainingInput.length > lineLength){
-      const line = remainingInput.substring(0,lineLength);
-      wrapped += line
-      if(lineWouldEndInSpace(remainingInput)){
-        wrapped += this.wordSplitter
+      if(true){
+        const line = remainingInput.substring(0,lineLength);
+        wrapped += line
+        if(lineWouldEndInSpace(remainingInput)){
+          wrapped += this.wordSplitter
+        }
+        wrapped +=  '\n'; 
+        remainingInput = remainingInput.substring(lineLength, input.length);
       }
-      wrapped +=  '\n'; 
-      remainingInput = remainingInput.substring(lineLength, input.length);
     }
     wrapped = wrapped + remainingInput;
     return {text: wrapped}

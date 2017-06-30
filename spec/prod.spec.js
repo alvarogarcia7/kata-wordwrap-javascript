@@ -22,6 +22,9 @@ describe('Word Wrap', () => {
     it('does not affect an input shorter than wrap size', () => {
      expect(wordWrap.aNew({}).wrap('abc').text).to.eql('abc');
     });
+    it('prefer not splitting if the line contains a minimum of words already', () => {
+     expect(wordWrap.aNew({wrapSize:10 }).wrap('012 345 678 901').text).to.eql('012 345 678\n901');
+    });
     it('word wrap at any specified size', () => {
        expect(wordWrap.aNew({wrapSize: 3}).wrap('123456789012').text).to.eql('12-\n34-\n56-\n78-\n90-\n12');
       });

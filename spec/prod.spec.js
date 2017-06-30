@@ -35,7 +35,7 @@ describe('Word Wrap', () => {
 });
 
 describe('WordWrap can use any rule', () => {
-  describe("", ()=>{
+  describe("use the first available rule", ()=>{
     var calls = 0
     expect(calls).to.equal(0)
     const wrapper = wordWrap.using({strategies: [{fn: remaining => {calls++; return remaining;}}]}).aNew({})

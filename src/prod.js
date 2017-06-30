@@ -1,10 +1,11 @@
 'use strict';
 
-module.exports = {aNew};
+module.exports = {aNew, using};
 
 class WordWrap {
 
-  constructor(options) {
+  constructor(adminOptions, options) {
+    this.strategies = adminOptions.strategies
     this.options = options;
     this.wrapSize = options.wrapSize||72;
     if(options.wordSplitter === undefined) {
@@ -19,6 +20,9 @@ class WordWrap {
     const lineLength = this.lineLength
     var wrapped = ''
     var remainingInput = input
+    if(this.strategies){
+      this.strategies[0].fn(input)
+    }
 
     while(remainingInput.length > lineLength){
         //missing strategies:
@@ -69,7 +73,13 @@ class WordWrap {
 }
 
 function aNew(options) {
-  return new WordWrap(options);
+  return new WordWrap({}, options);
+}
+
+function using(adminOptions) {
+  return {
+    aNew: options => new WordWrap(adminOptions, options)
+  }
 }
 
 /**

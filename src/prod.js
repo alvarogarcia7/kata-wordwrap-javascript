@@ -16,9 +16,6 @@ class WordWrap {
   }
 
   wrap(input) {
-    if(containsSpace(input)){
-    }
-
     const lineLength = this.lineLength
     var wrapped = ''
     var remainingInput = input

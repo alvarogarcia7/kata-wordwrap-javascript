@@ -21,6 +21,9 @@ class WordWrap {
     var remainingInput = input
 
     while(remainingInput.length > lineLength){
+        //missing strategies:
+        //  test through them
+        //  make this a rule evaluator
       if(lineHasSpaceAfterCompletingTheLinePastTheMinimumAndNormalSplittingWouldSplitAWord(remainingInput)) {
           const [line, rest] = extractLineWithAMinimumUpToSpace(remainingInput)
           wrapped+=line+'\n'

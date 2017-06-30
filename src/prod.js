@@ -12,6 +12,7 @@ class WordWrap {
     } else {
       this.wordSplitter = options.wordSplitter
     }
+    this.lineLength = this.wrapSize - this.wordSplitter.length
   }
 
   wrap(input) {
@@ -20,14 +21,14 @@ class WordWrap {
       return {text: firstLine+'\n'+secondLine}
     }
 
+    const lineLength = this.lineLength
     var wrapped = ''
     var remainingInput = input
-    const lineLength = this.wrapSize - this.wordSplitter.length
 
     while(remainingInput.length > lineLength){
       const line = remainingInput.substring(0,lineLength);
       wrapped += line
-      if(remainingInput.substring(lineLength, lineLength+1)!==' '){
+      if(lineWouldEndInSpace(remainingInput)){
         wrapped += this.wordSplitter
       }
       wrapped +=  '\n'; 
@@ -35,6 +36,11 @@ class WordWrap {
     }
     wrapped = wrapped + remainingInput;
     return {text: wrapped}
+
+    function lineWouldEndInSpace(candidateLine) {
+      return candidateLine.substring(lineLength, lineLength+1)!==' '
+    }
+      
 
     function splitByLastSpace(input){
       const values = input.split(/ ([^ ]+)$/)
